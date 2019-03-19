@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Symfony Art{% endblock %}
+
+{% block body %} 
+<h1>Add new Article </h1>
+{{ form_start(form) }}
+{{ form_widget(form) }}
+{{ form_end(form) }}
+{% endblock %}

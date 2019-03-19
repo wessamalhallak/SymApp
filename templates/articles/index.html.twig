@@ -20,7 +20,9 @@
                     {{ article.title }}
                 </td>
                 <td>
-                    <a href="{{ "/article/%s"|format(article.id) }}" class="btn btn-dark"> Go </a>
+                    <a href="{{ "/article/%s"|format(article.id) }}" class="btn btn-dark"> Show </a>
+                    <a href="{{ "/article/delete/%s"|format(article.id) }}" class="btn btn-danger"> Delete </a>
+                    <a href="{{ "/article/update/%s"|format(article.id) }}" class="btn btn-warning"> Update </a>
                 </td>
             </tr>
              
