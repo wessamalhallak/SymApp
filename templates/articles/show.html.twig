@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Symfony Art{% endblock %}
+
+{% block body %} 
+<h1>Hello </h1>
+<p>my name is {{ name }}</p>
+
+
+{% if article %}
+
+    <h2>{{ article.title }}</h2>
+    <h3> {# article.created #}</h3>
+    <p> {{ article.body }}</p>
+    <a href="/">Go Back</a>
+    
+{% else %}
+    <p class="error">There is no article </p>
+{% endif %}
+    
+
+{% endblock %}

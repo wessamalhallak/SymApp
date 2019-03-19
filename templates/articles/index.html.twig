@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Symfony Art{% endblock %}
+
+{% block body %} 
+<h1>Hello </h1>
+<p>my name is {{ name }}</p>
+
+
+{% if articles %}
+    <table class="table table-striped">
+        <thead>
+            <th>Article Title</th>
+            <th>Action</th>
+        </thead>
+        <tbody>
+            {% for article in articles %}
+            <tr>
+                <td>
+                    {{ article.title }}
+                </td>
+                <td>
+                    <a href="{{ "/article/%s"|format(article.id) }}" class="btn btn-dark"> Go </a>
+                </td>
+            </tr>
+             
+
+            {% endfor %}
+            
+        </tbody>
+    </table>
+{% else %}
+    <p class="error">There is no article </p>
+{% endif %}
+    
+
+{% endblock %}
