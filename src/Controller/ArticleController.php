@@ -89,4 +89,24 @@ class ArticleController extends Controller
         return $this->render('articles/new.html.twig', array('form' => $form->createView()));
 
     }
+       
+    /**
+     * @Route(path="/article/delete/{id}",name="del",requirements={"id"="\d+"})
+     * @Method({"DELETE"})
+     */
+    public function delete(Request $request, $id)
+    {
+        $article = $this->getDoctrine()->getRepository(Article::class)->find($id);
+        $entityManager = $this->getDoctrine()->getManager();
+        $entityManager->remove($article);
+        $entityManager->flush();
+
+        $respons=new Response();
+        
+        return $respons;
+
+
+    }
+
+
 }

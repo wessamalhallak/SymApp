@@ -8,7 +8,7 @@
 
 
 {% if articles %}
-    <table class="table table-striped">
+    <table id="articles" class="table table-striped">
         <thead>
             <th>Article Title</th>
             <th>Action</th>
@@ -21,7 +21,7 @@
                 </td>
                 <td>
                     <a href="{{ "/article/%s"|format(article.id) }}" class="btn btn-dark"> Show </a>
-                    <a href="{{ "/article/delete/%s"|format(article.id) }}" class="btn btn-danger"> Delete </a>
+                    <a href="#" class="btn btn-danger delete-article" data-id="{{article.id}}"> Delete </a>
                     <a href="{{ "/article/update/%s"|format(article.id) }}" class="btn btn-warning"> Update </a>
                 </td>
             </tr>
@@ -34,6 +34,9 @@
 {% else %}
     <p class="error">There is no article </p>
 {% endif %}
-    
 
+
+{% endblock %}
+{% block javascripts %}
+<script src="../asset/js/main.js"></script>
 {% endblock %}
