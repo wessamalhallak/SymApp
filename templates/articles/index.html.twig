@@ -3,9 +3,21 @@
 {% block title %}Symfony Art{% endblock %}
 
 {% block body %} 
-<h1>Hello </h1>
-<p>my name is {{ name }}</p>
+<h1>Article </h1>
+<p> Hallo my name is {{ name }}</p>
+{% if urls %}
+<h2>abslouturl IS </h2>
+<p>{{urls.abslouturl}}</p>
+<h2>relativeurl IS </h2>
+<p>{{urls.relativeurl}}</p>
+{% endif %}
 
+{% if versions %}
+<h2>versions1 IS </h2>
+<p>{{versions.version1}}</p>
+<h2>version2 IS </h2>
+<p>{{versions.version2}}</p>
+{% endif %}
 
 {% if articles %}
     <table id="articles" class="table table-striped">
