@@ -5,8 +5,6 @@ namespace App\Controller;
 use App\Entity\Article;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\component\Asset\Package;
-use Symfony\Component\Asset\VersionStrategy\StaticVersionStrategy;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -28,20 +26,8 @@ class ArticleController extends Controller
         //     "article2",
         //     "article3",
         //     "article4"];
-        $package = new Package(new StaticVersionStrategy('v1'));
-        $urls = array("abslouturl" => $package->getUrl('/image.png'),
-            'relativeurl' => $package->getUrl('image.png'));
 
-        $package2 = new Package(new StaticVersionStrategy("v2"));
-        $url2 = $package2->getUrl("image.png");
-        $versions = array("version1" => $package->getVersion($urls["abslouturl"]),
-            "version2" => $package2->getVersion($url2));
-
-        return $this->render("articles/index.html.twig",
-            array("name" => "Wessam",
-                "urls" => $urls,
-                "versions" => $versions,
-                "articles" => $article));
+        return $this->render("articles/index.html.twig", array("name" => "Wessam", "articles" => $article));
     }
 
     /**
@@ -96,14 +82,14 @@ class ArticleController extends Controller
             $entityManager->persist($article);
             $entityManager->flush();
 
-            return $this->redirectToRoute("article_show", array("id" => $article->getId()));
+            return $this->redirectToRoute("article_show",array("id"=>$article->getId()));
 
         }
 
         return $this->render('articles/new.html.twig', array('form' => $form->createView()));
 
     }
-
+       
     /**
      * @Route(path="/article/delete/{id}",name="del",requirements={"id"="\d+"})
      * @Method({"DELETE"})
@@ -115,10 +101,12 @@ class ArticleController extends Controller
         $entityManager->remove($article);
         $entityManager->flush();
 
-        $respons = new Response();
-
+        $respons=new Response();
+        
         return $respons;
 
+
     }
+
 
 }
