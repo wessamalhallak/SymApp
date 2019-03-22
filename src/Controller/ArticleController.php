@@ -33,7 +33,7 @@ class ArticleController extends Controller
     /**
      * @Route(path="/article/{id}", name="article_show",requirements={"id"="\d+"})
      */
-    public function show($id)
+    public function show($id) 
     {
         $article = $this->getDoctrine()->getRepository(Article::class)->find($id);
 
